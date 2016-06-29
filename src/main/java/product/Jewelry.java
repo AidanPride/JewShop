@@ -1,5 +1,6 @@
 package product;
 
+import java.awt.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -10,6 +11,8 @@ public abstract class Jewelry implements Product, Serializable {
     private List<Ingridient> ingridients;
     private double price;
     private int count;
+    private Color color;
+    private Image img;
 
     public Jewelry() {
     }
@@ -52,5 +55,21 @@ public abstract class Jewelry implements Product, Serializable {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    public Image getImg() {
+        return img;
+    }
+
+    public void setImg(Image img) {
+        this.img = img;
     }
 }
