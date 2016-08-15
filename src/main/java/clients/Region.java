@@ -1,4 +1,4 @@
-package clients;
+package src.main.java.clients;
 
 /**
  * Created by User on 25.06.2016.

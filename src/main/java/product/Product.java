@@ -1,4 +1,4 @@
-package product;
+package src.main.java.product;
 
 /**
  * Created by User on 12.06.2016.

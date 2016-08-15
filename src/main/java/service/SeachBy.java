@@ -1,7 +1,7 @@
-package service;
+package src.main.java.service;
 
 
-import product.Product;
+import src.main.java.product.Product;
 
 public interface SeachBy {
 

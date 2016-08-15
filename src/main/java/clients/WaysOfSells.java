@@ -1,4 +1,4 @@
-package clients;
+package src.main.java.clients;
 
 
 public enum WaysOfSells {

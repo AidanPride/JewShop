@@ -1,15 +1,15 @@
-package service;
+package src.main.java.service;
 
-import shop.Sells;
+import src.main.java.shop.Sale;
 
 import java.util.Date;
 import java.util.List;
 
 
 public interface BLI {
-    List<Sells> sellsByPeriod(Date begin , Date end);
+    List<Sale> sellsByPeriod(Date begin , Date end);
 
-    List<Sells> sellsByDay(Date date);
+    List<Sale> sellsByDay(Date date);
 
 
 

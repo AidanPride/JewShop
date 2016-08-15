@@ -1,20 +1,60 @@
-package product;
+package src.main.java.product;
 
 import java.awt.*;
 import java.io.Serializable;
 import java.util.List;
 
-public abstract class Jewelry implements Product, Serializable {
+public class Jewelry implements Product, Serializable {
 
+    private Types type;
     private String articul;
     private String name;
     private List<Ingridient> ingridients;
-    private double price;
+    private double primeCost;
+    private double value;
+    private int quantity;
     private int count;
-    private Color color;
+    private Colors color;
     private Image img;
 
     public Jewelry() {
+    }
+
+    public Jewelry(String articul, Types type, String name, List<Ingridient> ingridients, Colors color) {
+
+        this.articul = articul;
+        this.type = type;
+        this.name = name;
+        this.ingridients = ingridients;
+        this.count = count;
+        this.primeCost = calcPrice();
+        this.color = color;
+        this.img = img;
+        this.quantity = quantity;
+        this.value = calcValue();
+    }
+
+    public double  calcPrice() {
+
+        double result = 0.0;
+        for (Ingridient ingr : ingridients) {
+            result += ingr.calcPrice();
+        }
+        return result;
+    }
+
+    public double calcValue(){
+
+        double result = calcPrice() * 1.5;
+        return result;
+    }
+
+    public Types getType() {
+        return type;
+    }
+
+    public void setType(Types type) {
+        this.type = type;
     }
 
     public String getArticul() {
@@ -33,6 +73,14 @@ public abstract class Jewelry implements Product, Serializable {
         this.count = count;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     public List<Ingridient> getIngridients() {
         return ingridients;
     }
@@ -49,19 +97,19 @@ public abstract class Jewelry implements Product, Serializable {
         this.name = name;
     }
 
-    public double getPrice() {
-        return price;
+    public double getPrimeCost() {
+        return primeCost;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setPrimeCost(double primeCost) {
+        this.primeCost = primeCost;
     }
 
-    public Color getColor() {
+    public Colors getColor() {
         return color;
     }
 
-    public void setColor(Color color) {
+    public void setColor(Colors color) {
         this.color = color;
     }
 
@@ -72,4 +120,34 @@ public abstract class Jewelry implements Product, Serializable {
     public void setImg(Image img) {
         this.img = img;
     }
+
+    public double getValue() {
+        return value;
+    }
+
+    public void setValue(double value) {
+        this.value = value;
+    }
+
+    public void productInfoShow(){
+
+        System.out.printf("%-1s%-45s%-65s%-10s%-15s%n", " ", "|"+getArticul()+", "+getName(), "|" + prodIngrsShow(), "|    UAH " + getPrimeCost(), "   |");
+        System.out.println("----------------------------------------------------------------------------------------------------------------------------------");
+    }
+
+    public String prodIngrsShow(){
+
+        String result = "";
+        for (Ingridient ingr : ingridients){
+            result += ingr.ingridientShow() + ", ";
+        }
+        return result;
+    }
+
+    public String toString(){
+
+        return getType()+ ", " + getArticul() + ", " +  getName() + ", " +  getValue() + " - " + getCount();
+    }
+
+
 }
